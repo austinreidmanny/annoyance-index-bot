@@ -58,7 +58,7 @@ def scores():
 
     reg_start = '\['
     reg_end = '\]'
-    scores = re.findall('%s([0-9].[0-9])%s' % (reg_start, reg_end), values)
+    scores = re.findall('%s([0-9]*.[0-9])%s' % (reg_start, reg_end), values)
 
     yester_score = scores[-2]
     today_score = scores[-1]
@@ -71,11 +71,11 @@ def analysis():
     y_score, t_score = scores()
 
     if t_score > y_score:
-        return ('As of %s, the @AGoldmun Annoyance Index is up! BUY BUY BUY!' % current_date() )
+        return ('As of %s, the @AGoldmund Annoyance Index is up! BUY BUY BUY!' % current_date() )
     elif t_score < y_score:
-        return ('As of %s, the @AGoldmun Annoyance Index is down! SELL SELL SELL!' % current_date() )
+        return ('As of %s, the @AGoldmund Annoyance Index is down! SELL SELL SELL!' % current_date() )
     elif t_score == y_score:
-        return ("As of %s, @AGoldmun Annoyance Index is holding steady. " \
+        return ("As of %s, @AGoldmund Annoyance Index is holding steady. " \
                "That Alex is nothing if not consistent." % current_date() )
 
 
@@ -106,7 +106,6 @@ def tweet(text):
 
 
 def log(message):
-    # Revisit this to really understand how this logging implementation works
     path = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
     with open(os.path.join(path, logfile_name), 'a+') as f:
         t = strftime('%d %b %Y %H:%M:%S', gmtime())
